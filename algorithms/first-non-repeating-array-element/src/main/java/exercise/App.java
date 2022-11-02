@@ -1,5 +1,8 @@
 package exercise;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class App {
 
     public static int firstNonRepeating(int[] arr) {
@@ -16,6 +19,25 @@ public class App {
 
             if (j == length) {
                 return arr[i];
+            }
+        }
+        return -1;
+    }
+
+    public static int firstNonRepeating2(int[] arr) {
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int element : arr) {
+            if (map.containsKey(element)) {
+                map.put(element, map.get(element) + 1);
+            } else {
+                map.put(element, 1);
+            }
+        }
+
+        for (int element : arr) {
+            if (map.get(element) == 1) {
+                return element;
             }
         }
         return -1;
