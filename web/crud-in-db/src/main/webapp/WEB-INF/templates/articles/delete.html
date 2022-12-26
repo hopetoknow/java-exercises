@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layouts/application.html}">
+
+<head>
+  <title>Delete article</title>
+</head>
+<section layout:fragment="content" th:object="${article}">
+  <h1>Deleting an article</h1>
+  <p th:text="'Are you sure you want to delete the article ' + *{title} + '?'"></p>
+  <form th:action="@{/articles/{id}/delete(id=*{id})}" method="post">
+    <button type="submit" class="btn btn-danger">Yes, delete</button>
+  </form>
+</section>
