@@ -1,5 +1,6 @@
 Implement the isPowerOfThree() method, which determines whether the number
-passed in is a natural degree of three.
+passed in is a natural degree of three.  
+
 For example, number 27 is the third degree and 81 is the fourth degree.
 
 ````
