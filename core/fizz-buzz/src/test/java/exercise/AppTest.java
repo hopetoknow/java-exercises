@@ -39,7 +39,8 @@ class AppTest {
 
     @Test
     public void testFizzBuzz3() {
-        final String expected = "1\r\n2";
+        final String expected = String.format("1%n2");
+
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
@@ -53,7 +54,7 @@ class AppTest {
 
     @Test
     public void testFizzBuzz4() {
-        final String expected = "Fizz\r\n4\r\nBuzz\r\nFizz\r\n7\r\n8\r\nFizz\r\nBuzz";
+        final String expected = String.format("Fizz%n4%nBuzz%nFizz%n7%n8%nFizz%nBuzz");
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
@@ -67,7 +68,7 @@ class AppTest {
 
     @Test
     public void testFizzBuzz5() {
-        final String expected = "8\r\nFizz\r\nBuzz\r\n11\r\nFizz\r\n13\r\n14\r\nFizzBuzz\r\n16\r\n17\r\nFizz\r\n19\r\nBuzz";
+        final String expected = String.format("8%nFizz%nBuzz%n11%nFizz%n13%n14%nFizzBuzz%n16%n17%nFizz%n19%nBuzz");
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
