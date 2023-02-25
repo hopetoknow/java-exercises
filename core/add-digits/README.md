@@ -1,11 +1,8 @@
-Given a string s containing just the characters '(', ')', determine if the input string is valid.
-
-An input string is valid if:
-
-Open brackets must be closed in the correct order.
-Every close bracket has a corresponding open bracket.
+Implement the addDigits() method that takes a non-negative integer as input and returns another number derived from the first number by the following transformation: iteratively add all the digits in it until only one digit remains.
 
 ```
-isValid("(())");  // true
-isValid("()()");  // true
-isValid("((())"); // false
+addDigits(0);  // 0
+addDigits(1);  // 1
+addDigits(9);  // 9
+addDigits(10); // 1
+addDigits(38); // 2
