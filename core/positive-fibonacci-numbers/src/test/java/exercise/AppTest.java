@@ -16,4 +16,15 @@ class AppTest {
         assertThat(App.getFibonacciNumber(5)).isEqualTo(5);
         assertThat(App.getFibonacciNumber(10)).isEqualTo(55);
     }
+
+    @Test
+    void testGetFibonacciNumber2() {
+        assertThat(App.getFibonacciNumber2(0)).isEqualTo(0);
+        assertThat(App.getFibonacciNumber2(1)).isEqualTo(1);
+        assertThat(App.getFibonacciNumber2(2)).isEqualTo(1);
+        assertThat(App.getFibonacciNumber2(3)).isEqualTo(2);
+        assertThat(App.getFibonacciNumber2(4)).isEqualTo(3);
+        assertThat(App.getFibonacciNumber2(5)).isEqualTo(5);
+        assertThat(App.getFibonacciNumber2(10)).isEqualTo(55);
+    }
 }
