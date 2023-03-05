@@ -14,4 +14,15 @@ public class App {
 
         return result;
     }
+
+    public static int getHammingWeight2(int number) {
+        int result = 0;
+
+        while (number != 0) {
+            number = number & (number - 1);
+            result++;
+        }
+
+        return result;
+    }
 }
