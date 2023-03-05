@@ -25,4 +25,14 @@ class AppTest {
         assertThat(App.getHammingWeight2(101)).isEqualTo(4);
         assertThat(App.getHammingWeight2(12345)).isEqualTo(6);
     }
+
+    @Test
+    public void testGetHammingWeight3() {
+        assertThat(App.getHammingWeight3(0)).isEqualTo(0);
+        assertThat(App.getHammingWeight3(1)).isEqualTo(1);
+        assertThat(App.getHammingWeight3(5)).isEqualTo(2);
+        assertThat(App.getHammingWeight3(10)).isEqualTo(2);
+        assertThat(App.getHammingWeight3(101)).isEqualTo(4);
+        assertThat(App.getHammingWeight3(12345)).isEqualTo(6);
+    }
 }

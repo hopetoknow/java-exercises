@@ -25,4 +25,20 @@ public class App {
 
         return result;
     }
+
+    public static int getHammingWeight3(int number) {
+        int result = 0;
+        String str = Integer.toBinaryString(number);
+
+        for (char digit : str.toCharArray()) {
+            result += Character.getNumericValue(digit);
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        String str = Integer.toBinaryString(64);
+        System.out.println(str);
+    }
 }
