@@ -3,7 +3,7 @@ package exercise;
 public class App {
 
     public static int[] generate(int rowNumber) {
-        var result = new int[rowNumber + 1];
+        int[] result = new int[rowNumber + 1];
 
         for (int i = 0; i < rowNumber + 1; i++) {
             result[i] = factorial(rowNumber) / (factorial(i) * factorial(rowNumber - i));
