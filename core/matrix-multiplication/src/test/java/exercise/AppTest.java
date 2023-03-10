@@ -86,4 +86,38 @@ class AppTest {
         var actual = App.multiply(matrixA, matrixB);
         assertThat(actual).isDeepEqualTo(expected);
     }
+
+    @Test
+    public void testMultiplyMatrix5() {
+        int[][] matrixA = {
+                {2},
+        };
+        int[][] matrixB = {
+                {3},
+        };
+        int[][] expected = {
+                {6},
+        };
+
+        var actual = App.multiply(matrixA, matrixB);
+        assertThat(actual).isDeepEqualTo(expected);
+    }
+
+    @Test
+    public void testMultiplyMatrix6() {
+        int[][] matrixA = {
+                {1},
+                {2},
+        };
+        int[][] matrixB = {
+                {10, 20},
+        };
+        int[][] expected = {
+                {10, 20},
+                {20, 40},
+        };
+
+        var actual = App.multiply(matrixA, matrixB);
+        assertThat(actual).isDeepEqualTo(expected);
+    }
 }
