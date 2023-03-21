@@ -22,6 +22,11 @@ class RationalTest {
         assertThat(rational3.getNumerator()).isEqualTo(1);
         assertThat(rational3.getDenominator()).isEqualTo(-4);
         assertThat(rational3.toString()).isEqualTo("1/-4");
+
+        Rational rational4 = new Rational(-4, -16);
+        assertThat(rational4.getNumerator()).isEqualTo(1);
+        assertThat(rational4.getDenominator()).isEqualTo(4);
+        assertThat(rational4.toString()).isEqualTo("1/4");
     }
 
     @Test

@@ -6,6 +6,10 @@ class Rational {
     private final int denominator;
 
     Rational(int numerator, int denominator) {
+        if (numerator < 0 && denominator < 0) {
+            numerator = -numerator;
+            denominator = -denominator;
+        }
         int gcd = gcd(numerator, denominator);
         this.numerator = numerator / gcd;
         this.denominator = denominator / gcd;
