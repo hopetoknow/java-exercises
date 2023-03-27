@@ -13,6 +13,7 @@ class AppTest {
         assertThat(App.gcd(0, 10)).isEqualTo(10);
         assertThat(App.gcd(13, 13)).isEqualTo(13);
         assertThat(App.gcd(30, 45)).isEqualTo(15);
+        assertThat(App.gcd(0, 0)).isEqualTo(0);
     }
 
     @Test
@@ -22,5 +23,8 @@ class AppTest {
         assertThat(App.gcd2(0, 10)).isEqualTo(10);
         assertThat(App.gcd2(13, 13)).isEqualTo(13);
         assertThat(App.gcd2(30, 45)).isEqualTo(15);
+        assertThat(App.gcd2(0, 0)).isEqualTo(0);
+        assertThat(App.gcd2(30, 45)).isEqualTo(15);
+        assertThat(App.gcd2(7, 13)).isEqualTo(1);
     }
 }

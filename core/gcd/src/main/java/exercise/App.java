@@ -6,7 +6,7 @@ class App {
         if (b == 0) {
             return a;
         }
-        return gcd (b, a % b);
+        return gcd(b, a % b);
     }
 
     public static int gcd2(int a, int b) {
@@ -18,12 +18,11 @@ class App {
             return a;
         }
 
-        int result = 1;
-        for (int i = 1; i <= a && i <= b; i++) {
-            if (a % i == 0 && b % i == 0) {
-                result = i;
-            }
+        for (int i = Math.min(a, b); i > 1; i--) {
+            if (a % i == 0 && b % i == 0)
+                return i;
         }
-        return result;
+
+        return 1;
     }
 }
