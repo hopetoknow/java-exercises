@@ -8,35 +8,35 @@ class AppTest {
 
     @Test
     public void testCalcShipsCount() {
-        int[][] battleField1 = {};
-        assertThat(App.calculateShipCount(battleField1)).isEqualTo(0);
+        int[][] field1 = {};
+        assertThat(App.calculateShipCount(field1)).isEqualTo(0);
     }
 
     @Test
     public void testCalcShipsCount2() {
-        int[][] battleField2 = {{1}};
-        assertThat(App.calculateShipCount(battleField2)).isEqualTo(1);
+        int[][] field2 = {{1}};
+        assertThat(App.calculateShipCount(field2)).isEqualTo(1);
     }
 
     @Test
     public void testCalcShipsCount3() {
-        int[][] battleField3 = {{0}};
-        assertThat(App.calculateShipCount(battleField3)).isEqualTo(0);
+        int[][] field3 = {{0}};
+        assertThat(App.calculateShipCount(field3)).isEqualTo(0);
     }
 
     @Test
     public void testCalcShipsCount4() {
-        int[][] battleField4 = {
+        int[][] field4 = {
                 {0, 0, 1},
                 {0, 0, 0},
                 {1, 1, 0},
         };
-        assertThat(App.calculateShipCount(battleField4)).isEqualTo(2);
+        assertThat(App.calculateShipCount(field4)).isEqualTo(2);
     }
 
     @Test
     public void testCalcShipsCount5() {
-        int[][] battleField5 = {
+        int[][] field5 = {
                 {1, 1, 0, 0, 0, 0},
                 {0, 0, 0, 1, 1, 1},
                 {0, 0, 0, 0, 0, 0},
@@ -44,42 +44,55 @@ class AppTest {
                 {0, 0, 0, 0, 0, 1},
                 {1, 1, 0, 1, 0, 0},
         };
-        assertThat(App.calculateShipCount(battleField5)).isEqualTo(6);
+        assertThat(App.calculateShipCount(field5)).isEqualTo(6);
+    }
+
+    @Test
+    public void testCalcShipsCount6() {
+        int[][] field6 = {
+                {1, 0, 0, 0, 0, 0},
+                {1, 0, 1, 0, 1, 1},
+                {0, 0, 1, 0, 0, 0},
+                {1, 0, 1, 0, 0, 1},
+                {1, 0, 0, 0, 0, 1},
+                {0, 0, 0, 1, 0, 0},
+        };
+        assertThat(App.calculateShipCount(field6)).isEqualTo(6);
     }
 
     @Test
     public void testValidateField() {
-        int[][] battleField1 = {};
-        assertThat(App.isValidField(battleField1)).isTrue();
+        int[][] field1 = {};
+        assertThat(App.isValidField(field1)).isTrue();
     }
 
     @Test
     public void testValidateField2() {
-        int[][] battleField2 = {
+        int[][] field2 = {
                 {0, 1, 0, 0},
                 {1, 0, 0, 1},
                 {0, 0, 0, 0},
                 {0, 1, 1, 1},
         };
 
-        assertThat(App.isValidField(battleField2)).isFalse();
+        assertThat(App.isValidField(field2)).isFalse();
     }
 
     @Test
     public void testValidateField3() {
-        int[][] battleField3 = {
+        int[][] field3 = {
                 {0, 1, 1, 0},
                 {0, 0, 0, 0},
                 {0, 1, 0, 0},
                 {0, 1, 0, 1},
         };
 
-        assertThat(App.isValidField(battleField3)).isTrue();
+        assertThat(App.isValidField(field3)).isTrue();
     }
 
     @Test
     public void testValidateField4() {
-        int[][] battleField4 = {
+        int[][] field4 = {
                 {1, 1, 0, 0, 0, 0},
                 {0, 0, 0, 1, 1, 1},
                 {0, 0, 0, 0, 0, 0},
@@ -88,12 +101,12 @@ class AppTest {
                 {1, 1, 0, 1, 0, 0},
         };
 
-        assertThat(App.isValidField(battleField4)).isTrue();
+        assertThat(App.isValidField(field4)).isTrue();
     }
 
     @Test
     public void testValidateField5() {
-        int[][] battleField5 = {
+        int[][] field5 = {
                 {1, 1, 0, 0, 0, 0},
                 {0, 0, 0, 1, 1, 1},
                 {0, 0, 0, 0, 0, 0},
@@ -102,6 +115,18 @@ class AppTest {
                 {1, 0, 0, 1, 0, 0},
         };
 
-        assertThat(App.isValidField(battleField5)).isFalse();
+        assertThat(App.isValidField(field5)).isFalse();
+    }
+
+    @Test
+    public void testValidateField6() {
+        int[][] field6 = {
+                {0, 0, 0, 0},
+                {0, 0, 0, 0},
+                {0, 0, 1, 0},
+                {0, 0, 0, 1}
+        };
+
+        assertThat(App.isValidField(field6)).isFalse();
     }
 }
