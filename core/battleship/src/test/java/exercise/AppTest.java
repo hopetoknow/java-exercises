@@ -9,19 +9,19 @@ class AppTest {
     @Test
     public void testCalcShipsCount() {
         int[][] battleField1 = {};
-        assertThat(App.calcShipsCount(battleField1)).isEqualTo(0);
+        assertThat(App.calculateShipCount(battleField1)).isEqualTo(0);
     }
 
     @Test
     public void testCalcShipsCount2() {
         int[][] battleField2 = {{1}};
-        assertThat(App.calcShipsCount(battleField2)).isEqualTo(1);
+        assertThat(App.calculateShipCount(battleField2)).isEqualTo(1);
     }
 
     @Test
     public void testCalcShipsCount3() {
         int[][] battleField3 = {{0}};
-        assertThat(App.calcShipsCount(battleField3)).isEqualTo(0);
+        assertThat(App.calculateShipCount(battleField3)).isEqualTo(0);
     }
 
     @Test
@@ -31,7 +31,7 @@ class AppTest {
                 {0, 0, 0},
                 {1, 1, 0},
         };
-        assertThat(App.calcShipsCount(battleField4)).isEqualTo(2);
+        assertThat(App.calculateShipCount(battleField4)).isEqualTo(2);
     }
 
     @Test
@@ -44,7 +44,7 @@ class AppTest {
                 {0, 0, 0, 0, 0, 1},
                 {1, 1, 0, 1, 0, 0},
         };
-        assertThat(App.calcShipsCount(battleField5)).isEqualTo(6);
+        assertThat(App.calculateShipCount(battleField5)).isEqualTo(6);
     }
 
     @Test

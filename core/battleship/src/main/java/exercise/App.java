@@ -2,7 +2,7 @@ package exercise;
 
 class App {
 
-    public static int calcShipsCount(int[][] field) {
+    public static int calculateShipCount(int[][] field) {
         int fieldSize = field.length;
         int counter = 0;
 

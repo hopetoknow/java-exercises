@@ -1,6 +1,6 @@
 This is the popular game Battleship.
 
-Implement the public static method calcShipsCount(),
+Implement the public static method calculateShipCount(),
 which takes as input the battlefield as a square two-dimensional array of integers of zeros and ones.
 Zero is an empty cell, one is a part of a ship. The function should return the number of ships on the battlefield.
 
@@ -15,7 +15,7 @@ int[][] battleField1 = {
     {0, 0, 0, 0, 0, 1},
     {1, 1, 0, 1, 0, 0},
 };
-App.calcShipsCount(battleField1); // 6
+App.calculateShipCount(battleField1); // 6
 
 int[][] battleField2 = {
     {0, 1, 0, 0},
