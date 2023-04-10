@@ -1,14 +1,17 @@
 package exercise;
 
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 class App {
 
     public static String rgbToHex(int r, int g, int b) {
-        String hexR = Integer.toHexString(r);
-        String hexG = Integer.toHexString(g);
-        String hexB = Integer.toHexString(b);
+        String hex = Stream.of(r, g, b)
+                .map(channel -> Integer.toString(channel, 16))
+                .map(channel -> leftPad(channel, 2, "0"))
+                .collect(Collectors.joining(""));
 
-        return "#" + leftPad(hexR, 2, "0") + leftPad(hexG, 2, "0")
-                + leftPad(hexB, 2, "0");
+        return String.format("#%s", hex);
     }
 
     public static String leftPad(String str, int size, String padStr) {
