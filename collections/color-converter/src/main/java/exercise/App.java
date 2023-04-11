@@ -1,5 +1,7 @@
 package exercise;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -12,6 +14,20 @@ class App {
                 .collect(Collectors.joining(""));
 
         return String.format("#%s", hex);
+    }
+
+    public static Map<String, Integer> hexToRgb(String hex) {
+        String[] channels = chunk(hex.substring(1), 2);
+
+        int r = Integer.parseInt(channels[0], 16);
+        int g = Integer.parseInt(channels[1], 16);
+        int b = Integer.parseInt(channels[2], 16);
+
+        Map<String, Integer> rgb = new HashMap<>();
+        rgb.put("r", r);
+        rgb.put("g", g);
+        rgb.put("b", b);
+        return rgb;
     }
 
     public static String leftPad(String str, int size, String padStr) {
