@@ -8,10 +8,10 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.Map;
 import java.util.stream.Stream;
 
+import static exercise.App.chunk;
 import static exercise.App.leftPad;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
 
@@ -35,6 +35,15 @@ class AppTest {
         assertEquals("bat", leftPad("bat", -1, "yz"));
         assertEquals("  bat", leftPad("bat", 5, null));
         assertEquals("  bat", leftPad("bat", 5, ""));
+    }
+
+    @Test
+    public void testChunk() {
+        assertArrayEquals(new String[]{"Hello"}, chunk("Hello", 10));
+        assertArrayEquals(new String[]{"Hello"}, chunk("Hello", 5));
+        assertArrayEquals(new String[]{"Hello", " Worl", "d"}, chunk("Hello World", 5));
+        assertArrayEquals(new String[]{"Hell", "o Wo", "rld"}, chunk("Hello World", 4));
+        assertArrayEquals(new String[]{"Hello ", "World"}, chunk("Hello World", 6));
     }
 
     private static Stream<Arguments> provideData() {
