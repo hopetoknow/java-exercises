@@ -43,4 +43,8 @@ class App {
         sb.append(str);
         return sb.toString();
     }
+
+    public static String[] chunk(String text, int chunkSize) {
+        return text.split("(?<=\\G.{" + chunkSize + "})");
+    }
 }
