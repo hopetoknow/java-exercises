@@ -5,10 +5,11 @@ and the last two represent the blue component. Thus, each of the three colours r
 from 00 to FF in hexadecimal.
 
 When working with colours, you often need to get separate values of red, green and blue (RGB) colour components in
-decimal notation and vice versa. In App class implement public static methods rgbToHex() and hexToRgb() that return
+decimal notation and vice versa. In App class implement public static methods ```rgbToHex()``` and
+```hexToRgb()``` that return
 corresponding colour representations.
 
-The rgbToHex() method takes three integers as input - the values of the components in decimal system.
+The ```rgbToHex()``` method takes three integers as input - the values of the components in decimal system.
 The method must return a string - a colour value in hexadecimal notation
 
 The ```hexToRgb()``` method, on the contrary: it takes a string - a colour value in hexadecimal and must return
