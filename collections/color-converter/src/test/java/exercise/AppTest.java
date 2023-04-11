@@ -24,6 +24,12 @@ class AppTest {
         assertThat(App.rgbToHex(r, g, b)).isEqualTo(hex);
     }
 
+    @ParameterizedTest
+    @MethodSource("provideData")
+    void testHexToRgb(String hex, Map<String, Integer> rgb) {
+        assertThat(App.hexToRgb(hex)).isEqualTo(rgb);
+    }
+
     @Test
     void testLeftPad() {
         assertNull(leftPad(null, 5, "z"));
@@ -38,7 +44,7 @@ class AppTest {
     }
 
     @Test
-    public void testChunk() {
+    void testChunk() {
         assertArrayEquals(new String[]{"Hello"}, chunk("Hello", 10));
         assertArrayEquals(new String[]{"Hello"}, chunk("Hello", 5));
         assertArrayEquals(new String[]{"Hello", " Worl", "d"}, chunk("Hello World", 5));
