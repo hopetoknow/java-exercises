@@ -1,6 +1,5 @@
-file('exercises').listFiles().each { topic ->
-    topic.listFiles().each { exercise ->
-        include ":${exercise.name}"
-        project(":${exercise.name}").projectDir = exercise
+file('exercises').eachDir { topic ->
+    topic.eachDir { exercise ->
+        includeBuild("exercises/${topic.name}/${exercise.name}")
     }
 }
