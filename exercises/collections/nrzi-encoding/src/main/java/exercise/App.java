@@ -14,4 +14,22 @@ public class App {
                 })
                 .collect(Collectors.joining(""));
     }
+
+    public static String nrzi2(String signal) {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < signal.length(); i++) {
+            if (signal.charAt(i) == '|') {
+                continue;
+            }
+
+            if (i != 0 && signal.charAt(i - 1) == '|') {
+                sb.append("1");
+            } else {
+                sb.append("0");
+            }
+        }
+
+        return sb.toString();
+    }
 }
