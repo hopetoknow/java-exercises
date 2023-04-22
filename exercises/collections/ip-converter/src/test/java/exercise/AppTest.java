@@ -1,0 +1,32 @@
+package exercise;
+
+import org.junit.jupiter.api.Test;
+
+import static exercise.App.chunk;
+import static exercise.App.leftPad;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AppTest {
+
+    @Test
+    void testLeftPad() {
+        assertNull(leftPad(null, 5, "z"));
+        assertEquals("zzz", leftPad("", 3, "z"));
+        assertEquals("bat", leftPad("bat", 3, "yz"));
+        assertEquals("yzbat", leftPad("bat", 5, "yz"));
+        assertEquals("yzyzybat", leftPad("bat", 8, "yz"));
+        assertEquals("bat", leftPad("bat", 1, "yz"));
+        assertEquals("bat", leftPad("bat", -1, "yz"));
+        assertEquals("  bat", leftPad("bat", 5, null));
+        assertEquals("  bat", leftPad("bat", 5, ""));
+    }
+
+    @Test
+    void testChunk() {
+        assertArrayEquals(new String[]{"Hello"}, chunk("Hello", 10));
+        assertArrayEquals(new String[]{"Hello"}, chunk("Hello", 5));
+        assertArrayEquals(new String[]{"Hello", " Worl", "d"}, chunk("Hello World", 5));
+        assertArrayEquals(new String[]{"Hell", "o Wo", "rld"}, chunk("Hello World", 4));
+        assertArrayEquals(new String[]{"Hello ", "World"}, chunk("Hello World", 6));
+    }
+}
