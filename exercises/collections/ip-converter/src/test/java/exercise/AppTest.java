@@ -22,6 +22,12 @@ class AppTest {
 
     @ParameterizedTest
     @MethodSource("provideData")
+    void testIpToDecimal2(String ip, long decimal) {
+        assertThat(App.ipToDecimal2(ip)).isEqualTo(decimal);
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideData")
     void testDecimalToIp(String ip, long decimal) {
         assertThat(App.decimalToIp(decimal)).isEqualTo(ip);
     }

@@ -14,6 +14,18 @@ class App {
                 .sum();
     }
 
+    public static long ipToDecimal2(String ip) {
+        String[] octets = ip.split("\\.");
+        String binaryIp = Stream.of(octets)
+                .map(octet -> {
+                    String binaryOctet = Integer.toBinaryString(Integer.parseInt(octet));
+                    return leftPad(binaryOctet, 8, "0");
+                })
+                .collect(Collectors.joining());
+
+        return Long.parseLong(binaryIp, 2);
+    }
+
     public static String decimalToIp(long decimal) {
         String binaryString = Long.toString(decimal, 2);
         String binaryStringWithLeadingZeros = leftPad(binaryString, 32, "0");
