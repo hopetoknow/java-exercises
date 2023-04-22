@@ -1,6 +1,16 @@
 package exercise;
 
+import java.util.stream.IntStream;
+
 class App {
+
+    public static long ipToDecimal(String ip) {
+        String[] octets = ip.split("\\.");
+
+        return IntStream.range(0, 4)
+                .mapToLong(index -> (long) (Integer.parseInt(octets[index]) * Math.pow(256, 3 - index)))
+                .sum();
+    }
 
     public static String leftPad(String str, int size, String padStr) {
         if (str == null) {
