@@ -32,6 +32,12 @@ class AppTest {
         assertThat(App.decimalToIp(decimal)).isEqualTo(ip);
     }
 
+    @ParameterizedTest
+    @MethodSource("provideData")
+    void testDecimalToIp2(String ip, long decimal) {
+        assertThat(App.decimalToIp2(decimal)).isEqualTo(ip);
+    }
+
     @Test
     void testLeftPad() {
         assertNull(leftPad(null, 5, "z"));

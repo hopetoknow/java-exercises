@@ -27,15 +27,26 @@ class App {
     }
 
     public static String decimalToIp(long decimal) {
-        String binaryString = Long.toString(decimal, 2);
-        String binaryStringWithLeadingZeros = leftPad(binaryString, 32, "0");
-        String[] octets = chunk(binaryStringWithLeadingZeros, 8);
+        String binaryIp = Long.toString(decimal, 2);
+        String binaryIpWithLeadingZeros = leftPad(binaryIp, 32, "0");
+        String[] binaryOctets = chunk(binaryIpWithLeadingZeros, 8);
 
-        return Stream.of(octets)
-                .map(chunk -> {
-                    int binaryOctet = Integer.parseInt(chunk, 2);
+        return Stream.of(binaryOctets)
+                .map(octet -> {
+                    int binaryOctet = Integer.parseInt(octet, 2);
                     return Integer.toString(binaryOctet, 10);
                 })
+                .collect(Collectors.joining("."));
+    }
+
+    public static String decimalToIp2(long decimal) {
+        String hexIp = Long.toString(decimal, 16);
+        String hexIpWithLeadingZeros = leftPad(hexIp, 8, "0");
+        String[] hexOctets = chunk(hexIpWithLeadingZeros, 2);
+
+        return Stream.of(hexOctets)
+                .map(octet -> Integer.parseInt(octet, 16))
+                .map(Object::toString)
                 .collect(Collectors.joining("."));
     }
 
