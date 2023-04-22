@@ -1,6 +1,8 @@
 package exercise;
 
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 class App {
 
@@ -10,6 +12,19 @@ class App {
         return IntStream.range(0, 4)
                 .mapToLong(index -> (long) (Integer.parseInt(octets[index]) * Math.pow(256, 3 - index)))
                 .sum();
+    }
+
+    public static String decimalToIp(long decimal) {
+        String binaryString = Long.toString(decimal, 2);
+        String binaryStringWithLeadingZeros = leftPad(binaryString, 32, "0");
+        String[] octets = chunk(binaryStringWithLeadingZeros, 8);
+
+        return Stream.of(octets)
+                .map(chunk -> {
+                    int binaryOctet = Integer.parseInt(chunk, 2);
+                    return Integer.toString(binaryOctet, 10);
+                })
+                .collect(Collectors.joining("."));
     }
 
     public static String leftPad(String str, int size, String padStr) {
