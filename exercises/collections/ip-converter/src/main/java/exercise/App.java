@@ -26,6 +26,18 @@ class App {
         return Long.parseLong(binaryIp, 2);
     }
 
+    public static long ipToDecimal3(String ip) {
+        String[] octets = ip.split("\\.");
+        String hexIp = Stream.of(octets)
+                .map(octet -> {
+                    String binaryOctet = Integer.toHexString(Integer.parseInt(octet));
+                    return leftPad(binaryOctet, 2, "0");
+                })
+                .collect(Collectors.joining());
+
+        return Long.parseLong(hexIp, 16);
+    }
+
     public static String decimalToIp(long decimal) {
         String binaryIp = Long.toString(decimal, 2);
         String binaryIpWithLeadingZeros = leftPad(binaryIp, 32, "0");
@@ -34,7 +46,7 @@ class App {
         return Stream.of(binaryOctets)
                 .map(octet -> {
                     int binaryOctet = Integer.parseInt(octet, 2);
-                    return Integer.toString(binaryOctet, 10);
+                    return Integer.toString(binaryOctet);
                 })
                 .collect(Collectors.joining("."));
     }
