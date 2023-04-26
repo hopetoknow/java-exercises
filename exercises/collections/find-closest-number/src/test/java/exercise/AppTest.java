@@ -10,7 +10,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 class AppTest {
 
     @Test
-    void testFindNearest() {
+    void testFindIndexOfClosest() {
         List<Integer> numbers1 = new ArrayList<>();
         int actual1 = App.findIndexOfClosest(numbers1, 2);
         assertThat(actual1).isEqualTo(-1);
