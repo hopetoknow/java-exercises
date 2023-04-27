@@ -9,6 +9,23 @@ public class App {
             return -1;
         }
 
+        List<Integer> diffs = numbers.stream()
+                .map(number -> Math.abs(number - desiredNumber))
+                .toList();
+
+        int minDiff = diffs.stream()
+                .mapToInt(Integer::intValue)
+                .min()
+                .getAsInt();
+
+        return diffs.indexOf(minDiff);
+    }
+
+    public static int findIndexOfClosest2(List<Integer> numbers, int desiredNumber) {
+        if (numbers.isEmpty()) {
+            return -1;
+        }
+
         int result = 0;
         int prevDiff = Math.abs(numbers.get(0) - desiredNumber);
         int currentDiff;
