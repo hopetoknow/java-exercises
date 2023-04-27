@@ -5,22 +5,20 @@ import java.util.List;
 public class App {
 
     public static int findIndexOfClosest(List<Integer> numbers, int desiredNumber) {
-        int result = -1;
-        int diff;
-        int prevDiff;
+        if (numbers.isEmpty()) {
+            return -1;
+        }
 
-        for (int i = 0; i < numbers.size(); i++) {
-            if (i == 0) {
-                result = 0;
-                continue;
-            }
+        int result = 0;
+        int prevDiff = Math.abs(numbers.get(0) - desiredNumber);
+        int currentDiff;
 
-            prevDiff = Math.abs(numbers.get(i - 1) - desiredNumber);
-            diff = Math.abs(numbers.get(i) - desiredNumber);
+        for (int i = 1; i < numbers.size(); i++) {
+            currentDiff = Math.abs(numbers.get(i) - desiredNumber);
 
-
-            if (diff < prevDiff) {
+            if (currentDiff < prevDiff) {
                 result = i;
+                prevDiff = currentDiff;
             }
         }
 
