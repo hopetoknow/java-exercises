@@ -51,11 +51,11 @@ testlogger {
   showStandardStreams = true
 }
 
-task generateMigrations(type: JavaExec) {
+tasks.register('generateMigrations', JavaExec) {
   classpath = sourceSets.main.runtimeClasspath
   mainClass = 'exercise.MigrationGenerator'
 }
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
   options.encoding = "UTF-8"
 }
