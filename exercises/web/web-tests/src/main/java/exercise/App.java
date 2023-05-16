@@ -1,6 +1,5 @@
 package exercise;
 
-// Импортируем зависимости, необходимые для работы приложения
 import io.javalin.Javalin;
 import io.javalin.plugin.rendering.template.JavalinThymeleaf;
 import static io.javalin.apibuilder.ApiBuilder.path;

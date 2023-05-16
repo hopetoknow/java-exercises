@@ -16,8 +16,8 @@ application {
 }
 
 dependencies {
-  implementation 'org.apache.tomcat.embed:tomcat-embed-core:8.5.69'
-  implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:8.5.69'
+  implementation 'org.apache.tomcat.embed:tomcat-embed-core:8.5.88'
+  implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:8.5.88'
   implementation 'org.apache.tomcat.embed:tomcat-embed-logging-juli:8.5.2'
   implementation 'com.github.javafaker:javafaker:1.0.2'
 
@@ -35,7 +35,7 @@ testlogger {
   showStandardStreams = true
 }
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
   options.encoding = "UTF-8"
 }
 
