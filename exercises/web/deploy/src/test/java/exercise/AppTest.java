@@ -28,6 +28,8 @@ class AppTest {
     private static String baseUrl;
     private static CloseableHttpClient client;
 
+    private static final String lineSeparator = System.lineSeparator();
+
     @BeforeAll
     public static void setup() throws LifecycleException {
         app = App.getApp(0);
@@ -58,7 +60,7 @@ class AppTest {
         String content = EntityUtils.toString(entity);
 
         assertThat(response.getCode()).isEqualTo(200);
-        List<String> companies = List.of(content.trim().split("\n"));
+        List<String> companies = List.of(content.trim().split(lineSeparator));
         assertThat(companies).isEqualTo(getCompanies());
     }
 
@@ -71,7 +73,7 @@ class AppTest {
         String content = EntityUtils.toString(entity);
 
         assertThat(response.getCode()).isEqualTo(200);
-        List<String> companies = List.of(content.trim().split("\n"));
+        List<String> companies = List.of(content.trim().split(lineSeparator));
         assertThat(companies).isEqualTo(getCompanies());
     }
 
@@ -84,7 +86,7 @@ class AppTest {
         String content = EntityUtils.toString(entity);
 
         assertThat(response.getCode()).isEqualTo(200);
-        List<String> companies = List.of(content.trim().split("\n"));
+        List<String> companies = List.of(content.trim().split(lineSeparator));
         List<String> expected = List.of(
             "Lueilwitz, Reynolds and Schumm Inc",
             "Volkman-Morar and Sons",
@@ -109,7 +111,7 @@ class AppTest {
         String content = EntityUtils.toString(entity);
 
         assertThat(response.getCode()).isEqualTo(200);
-        List<String> companies = List.of(content.trim().split("\n"));
+        List<String> companies = List.of(content.trim().split(lineSeparator));
         List<String> expected = List.of(
             "Cartwright-Glover and Sons",
             "Hermann, Macejkovic and Brekke Group"

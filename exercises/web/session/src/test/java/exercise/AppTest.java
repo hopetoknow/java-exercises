@@ -233,9 +233,10 @@ class AppTest {
         HttpEntity entity = response.getEntity();
         String content = EntityUtils.toString(entity);
 
-        // Проверяем, что пользователь аутентифицирован по наличию кнопки Выход и отсутствию кнопки Вход
-        assertThat(content).contains("Выход");
-        assertThat(content).doesNotContain("Вход");
+        // Verify that the user is authenticated by the presence of the "Sign out" button
+        // and the absence of the "Sign in" button
+        assertThat(content).contains("Sign out");
+        assertThat(content).doesNotContain("Sign in");
     }
 
     @Test
@@ -253,9 +254,9 @@ class AppTest {
         HttpEntity entity = response.getEntity();
         String content = EntityUtils.toString(entity);
 
-        // Проверяем, что пользователь вышел по наличию кнопки Вход и отсутствию кнопки Выход
-        assertThat(content).contains("Вход");
-        assertThat(content).doesNotContain("Выход");
+        // Verify that the user has logged out by checking that there is a "Sign in" button and no "Sign out" button
+        assertThat(content).contains("Sign in");
+        assertThat(content).doesNotContain("Sign out");
     }
 
     @Test
@@ -288,9 +289,9 @@ class AppTest {
         HttpEntity entity1 = response1.getEntity();
         String content1 = EntityUtils.toString(entity1);
 
-        // Проверяем, что после входа выводится flash-сообщение "Вы успешно вошли"
+        // Check that the flash message "You have successfully logged in" is displayed after logging in
         assertThat(response1.getCode()).isEqualTo(200);
-        assertThat(content1).contains("Вы успешно вошли");
+        assertThat(content1).contains("You have successfully logged in");
 
         HttpGet getRequest = new HttpGet(baseUrl);
         CloseableHttpResponse response2 = client.execute(getRequest);
@@ -298,17 +299,17 @@ class AppTest {
         HttpEntity entity2 = response2.getEntity();
         String content2 = EntityUtils.toString(entity2);
 
-        // Проверяем, что flash-сообщение выводится только один раз
-        assertThat(content2).doesNotContain("Вы успешно вошли");
+        // Check that the flash message is only displayed once
+        assertThat(content2).doesNotContain("You have successfully logged in");
 
         HttpPost postRequest2 = new HttpPost(baseUrl + "/logout");
         CloseableHttpResponse response3 = client.execute(postRequest2);
         HttpEntity entity3 = response3.getEntity();
         String content3 = EntityUtils.toString(entity3);
 
-        // Проверяем, что после выхода выводится flash-сообщение "Вы успешно вышли"
+        // Check that the flash message "You have successfully logged out" is displayed after exit
         assertThat(response3.getCode()).isEqualTo(200);
-        assertThat(content3).contains("Вы успешно вышли");
+        assertThat(content3).contains("You have successfully logged out");
     }
 
     @AfterAll
