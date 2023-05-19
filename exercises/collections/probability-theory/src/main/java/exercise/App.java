@@ -22,22 +22,18 @@ public class App {
             int nextNumber = numbers.get(i + 1);
 
             Map<Integer, Double> innerMap = probabilities.get(currentNumber);
-
-            if (!innerMap.containsKey(nextNumber)) {
-                innerMap.put(nextNumber, 1.0);
-            } else {
-                innerMap.put(nextNumber, innerMap.get(nextNumber) + 1.0);
-            }
+            double occurrenceCount = innerMap.getOrDefault(nextNumber, 0.0) + 1.0;
+            innerMap.put(nextNumber, occurrenceCount);
         }
 
         for (Map.Entry<Integer, Map<Integer, Double>> entry : probabilities.entrySet()) {
             Map<Integer, Double> innerMap = entry.getValue();
-            double sum = innerMap.values().stream().mapToDouble(Double::doubleValue).sum();
+            double sumOfOccurrence = innerMap.values().stream().mapToDouble(Double::doubleValue).sum();
 
             for (Map.Entry<Integer, Double> innerEntry : innerMap.entrySet()) {
                 int number = innerEntry.getKey();
                 double occurrenceCount  = innerEntry.getValue();
-                double probability = occurrenceCount / sum;
+                double probability = occurrenceCount / sumOfOccurrence;
                 innerMap.put(number, probability);
             }
         }
