@@ -3,6 +3,9 @@ package exercise;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class App {
 
@@ -39,5 +42,34 @@ public class App {
         }
 
         return probabilities;
+    }
+
+    public static Map<Integer, Map<Integer, Double>> calculateProbabilities2(List<Integer> numbers) {
+        return numbers.stream()
+                .distinct()
+                .collect(Collectors.toMap(
+                        Function.identity(),
+                        number -> findProbabilityOfNextNumbers(numbers, number)
+                ));
+    }
+
+    private static Map<Integer, Double> findProbabilityOfNextNumbers(List<Integer> numbers, int number) {
+        List<Integer> nextNumbers = IntStream.range(1, numbers.size())
+                .filter(index -> numbers.get(index - 1) == number)
+                .mapToObj(numbers::get)
+                .toList();
+
+        return nextNumbers.stream()
+                .distinct()
+                .collect(Collectors.toMap(
+                        Function.identity(),
+                        element ->  (double) countElements(nextNumbers, element) / nextNumbers.size()
+                ));
+    }
+
+    private static long countElements(List<Integer> elements, int element) {
+        return elements.stream()
+                .filter(currentElement -> currentElement == element)
+                .count();
     }
 }
