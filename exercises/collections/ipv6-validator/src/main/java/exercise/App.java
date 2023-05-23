@@ -2,6 +2,7 @@ package exercise;
 
 import org.apache.commons.lang3.math.NumberUtils;
 
+import java.util.List;
 import java.util.stream.Stream;
 
 public class App {
@@ -33,8 +34,27 @@ public class App {
         String formattedIP = ip.replace("::", replacement);
         String[] formattedGroups = formattedIP.split(":");
 
-        return Stream.of(formattedGroups)
-                .allMatch(App::isValidGroup);
+        return Stream.of(formattedGroups).allMatch(App::isValidGroup);
+    }
+
+    public static boolean isValidIPv62(String ip) {
+        if (ip.indexOf("::") != ip.lastIndexOf("::")) {
+            return false;
+        }
+
+        List<String> groups = Stream.of(ip.split("::"))
+                .filter(group -> !group.isEmpty())
+                .flatMap(group -> Stream.of(group.split(":", -1)))
+                .toList();
+
+        boolean isShort = ip.contains("::");
+        int length = isShort ? groups.size() + 2 : groups.size();
+
+        if ((!isShort && length < 8) || length > 8) {
+            return false;
+        }
+
+        return groups.stream().allMatch(App::isValidGroup);
     }
 
     private static boolean isValidGroup(String group) {
