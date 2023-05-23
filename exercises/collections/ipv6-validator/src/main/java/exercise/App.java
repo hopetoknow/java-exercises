@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 public class App {
 
     public static boolean isValidIPv6(String ip) {
-        if (ip.indexOf("::") != ip.lastIndexOf("::")) {
+        if (ip.endsWith(":") && !ip.endsWith("::")) {
             return false;
         }
 
@@ -15,7 +15,7 @@ public class App {
             return false;
         }
 
-        if (ip.endsWith(":") && ip.charAt(ip.length() - 2) != ':') {
+        if (ip.indexOf("::") != ip.lastIndexOf("::")) {
             return false;
         }
 
@@ -29,15 +29,8 @@ public class App {
             return false;
         }
 
-        String formattedIP;
-
-        if (ip.startsWith("::")) {
-            formattedIP = ip.replace("::", "0:");
-        } else {
-
-            formattedIP = ip.replace("::", ":0:");
-        }
-
+        String replacement = ip.startsWith("::") ? "0:" : ":0:";
+        String formattedIP = ip.replace("::", replacement);
         String[] formattedGroups = formattedIP.split(":");
 
         return Stream.of(formattedGroups)
@@ -45,6 +38,7 @@ public class App {
     }
 
     private static boolean isValidGroup(String group) {
-        return NumberUtils.isCreatable("0x" + group) && group.length() <= 4;
+        String hex = "0x" + group;
+        return NumberUtils.isCreatable(hex) && group.length() <= 4;
     }
 }
