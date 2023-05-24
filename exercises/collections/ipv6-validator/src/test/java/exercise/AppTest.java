@@ -40,7 +40,9 @@ class AppTest {
             "5c03:0:a::b825:d690:4ce0:2831:acf0",
             ":1::1",
             "1::1:",
-            "2a02:0cb41:0:0:0:0:0:7"
+            "2a02:0cb41:0:0:0:0:0:7",
+            "2001:a004:10b0:b825:2831:abc7:1312::",
+            "2001:a004:10b0:b825:2831:abc7:1312:2025::"
     })
     void testIsValidIPv6WhenInvalid(String ip) {
         assertThat(App.isValidIPv6(ip)).isFalse();
@@ -79,7 +81,9 @@ class AppTest {
             "5c03:0:a::b825:d690:4ce0:2831:acf0",
             ":1::1",
             "1::1:",
-            "2a02:0cb41:0:0:0:0:0:7"
+            "2a02:0cb41:0:0:0:0:0:7",
+            "2001:a004:10b0:b825:2831:abc7:1312::",
+            "2001:a004:10b0:b825:2831:abc7:1312:2025::"
     })
     void testIsValidIPv6WhenInvalid2(String ip) {
         assertThat(App.isValidIPv62(ip)).isFalse();

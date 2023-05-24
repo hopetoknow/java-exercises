@@ -26,13 +26,13 @@ public class App {
             return false;
         }
 
-        if (groups.length == 8 && ip.contains("::")) {
-            return false;
-        }
-
         String replacement = ip.startsWith("::") ? "0:" : ":0:";
         String formattedIP = ip.replace("::", replacement);
         String[] formattedGroups = formattedIP.split(":");
+
+        if (formattedGroups.length >= 8 && ip.contains("::")) {
+            return false;
+        }
 
         return Stream.of(formattedGroups).allMatch(App::isValidGroup);
     }
