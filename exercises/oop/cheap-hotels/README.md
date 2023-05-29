@@ -31,8 +31,8 @@ List<Map<String, Object>> hotelInfos = gateway.findAll();
 System.out.println(hotelInfos);
 // =>
 // [
-//     {hotel={name=hexletInn, cost=672.0}, service=ostrovok},
-//     {hotel={name=hexletInn, cost=1125.0}, service=booking}
+//     {hotel={name=bestHotel, cost=672.0}, service=ostrovok},
+//     {hotel={name=bestHotel, cost=1125.0}, service=booking}
 // ]
 ```
 The gateway supports filtering by minimum and maximum price:
