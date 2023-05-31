@@ -12,13 +12,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public final class Gateway {
 
     private final List<Map<String, Object>> hotelsByService = getData("data.json");
 
     private static List<Map<String, Object>> getData(String fileName) {
-        Path filePath = Paths.get("exercises","oop", "cheap-hotels", "src", "main", "resources", fileName)
+        Path filePath = Paths.get("src", "main", "resources", fileName)
                 .toAbsolutePath().normalize();
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -52,5 +53,25 @@ public final class Gateway {
         }
 
         return hotelInfos;
+    }
+
+    public List<Map<String, Object>> findAll(Map<String, Integer> predicates) {
+        List<Map<String, Object>> hotelInfos = findAll();
+
+        return hotelInfos.stream()
+                .filter(hotelInfo -> {
+                    double cost = (double) ((Map<String, Object>)hotelInfo.get("hotel")).get("cost");
+                    Integer min = predicates.get("min");
+                    Integer max = predicates.get("max");
+                    if (min != null && max != null) {
+                        return cost >= min && cost <= max;
+                    } else if (min != null) {
+                        return cost >= min;
+                    } else if (max != null) {
+                        return cost <= max;
+                    }
+                    return true;
+                })
+                .collect(Collectors.toList());
     }
 }
