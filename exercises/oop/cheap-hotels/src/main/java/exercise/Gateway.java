@@ -21,18 +21,7 @@ public final class Gateway {
 
     private final List<Map<String, Object>> hotelsByService = getData(FILE_NAME);
 
-    private static List<Map<String, Object>> getData(String fileName) {
-        Path filePath = Paths.get("src", "main", "resources", fileName).toAbsolutePath().normalize();
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            String content = Files.readString(filePath).trim();
-            return mapper.readValue(content, new TypeReference<List<Map<String, Object>>>() { });
-        } catch (IOException e) {
-            throw new RuntimeException("Error reading JSON file: " + fileName, e);
-        }
-    }
-
-    public List<Map<String, Object>> findAll() {
+    public List<Map<String, Object>> findAll(Map<String, Integer> priceRangeFilters) {
         List<Map<String, Object>> hotelInfos = new ArrayList<>();
 
         for (Map<String, Object> serviceHotels : hotelsByService) {
@@ -47,12 +36,6 @@ public final class Gateway {
                 hotelInfos.add(hotelAndService);
             }
         }
-
-        return hotelInfos;
-    }
-
-    public List<Map<String, Object>> findAll(Map<String, Integer> priceRangeFilters) {
-        List<Map<String, Object>> hotelInfos = findAll();
 
         return hotelInfos.stream()
                 .filter(hotelInfo -> {
@@ -71,6 +54,17 @@ public final class Gateway {
                     return true;
                 })
                 .collect(Collectors.toList());
+    }
+
+    private static List<Map<String, Object>> getData(String fileName) {
+        Path filePath = Paths.get("src", "main", "resources", fileName).toAbsolutePath().normalize();
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            String content = Files.readString(filePath).trim();
+            return mapper.readValue(content, new TypeReference<List<Map<String, Object>>>() { });
+        } catch (IOException e) {
+            throw new RuntimeException("Error reading JSON file: " + fileName, e);
+        }
     }
 
      private Map<String, Object> convertPrice(String service, Map<String, Object> str) {
