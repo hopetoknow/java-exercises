@@ -13,12 +13,12 @@ public class AppTest {
                 "service", "ostrovok"
         );
 
-        Map<String, Integer> predicates = Map.of(
+        Map<String, Integer> priceRangeFilters = Map.of(
                 "min", 600,
                 "max", 800
         );
 
-        Map<String, Object> actual = App.findTheCheapestService(predicates);
+        Map<String, Object> actual = App.findTheCheapestService(priceRangeFilters);
         assertThat(actual).isEqualTo(expected);
 
     }
@@ -30,12 +30,12 @@ public class AppTest {
                 "service", "ostrovok"
         );
 
-        Map<String, Integer> predicates = Map.of(
+        Map<String, Integer> priceRangeFilters = Map.of(
                 "min", 650,
                 "max", 700
         );
 
-        Map<String, Object> actual = App.findTheCheapestService(predicates);
+        Map<String, Object> actual = App.findTheCheapestService(priceRangeFilters);
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -46,11 +46,11 @@ public class AppTest {
                 "service", "booking"
         );
 
-        Map<String, Integer> predicates = Map.of(
+        Map<String, Integer> priceRangeFilters = Map.of(
                 "min", 800
         );
 
-        Map<String, Object> actual = App.findTheCheapestService(predicates);
+        Map<String, Object> actual = App.findTheCheapestService(priceRangeFilters);
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -61,11 +61,11 @@ public class AppTest {
                 "service", "kayak"
         );
 
-        Map<String, Integer> predicates = Map.of(
+        Map<String, Integer> priceRangeFilters = Map.of(
                 "max", 570
         );
 
-        Map<String, Object> actual = App.findTheCheapestService(predicates);
+        Map<String, Object> actual = App.findTheCheapestService(priceRangeFilters);
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -77,6 +77,19 @@ public class AppTest {
         );
 
         Map<String, Object> actual = App.findTheCheapestService();
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void testFindTheCheapestServiceWithNoMatch() {
+        Map<String, Object> expected = null;
+
+        Map<String, Integer> priceRangeFilters = Map.of(
+                "min", 4200,
+                "max", 42000
+        );
+
+        Map<String, Object> actual = App.findTheCheapestService(priceRangeFilters);
         assertThat(actual).isEqualTo(expected);
     }
 }
