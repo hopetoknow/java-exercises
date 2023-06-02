@@ -27,7 +27,8 @@ public class App {
     public static Map<String, Object> findTheCheapestService2(Map<String, Integer> priceRangeFilters) {
         Gateway gateway = new Gateway();
 
-        return gateway.findAll2(priceRangeFilters).stream().min(Comparator.comparing(hotelInfo -> {
+        return gateway.findAll2(priceRangeFilters).stream()
+                .min(Comparator.comparing(hotelInfo -> {
                     Map<String, Object> hotel = (Map) hotelInfo.get("hotel");
                     return (double) hotel.get("cost");
                 }))
@@ -41,6 +42,6 @@ public class App {
 
     private static void sort(List<Map<String, Object>> hotelInfos) {
         hotelInfos.sort(Comparator.comparing(hotelInfo ->
-                (double) ((Map<String, Object>)hotelInfo.get("hotel")).get("cost")));
+                (double) ((Map<String, Object>) hotelInfo.get("hotel")).get("cost")));
     }
 }

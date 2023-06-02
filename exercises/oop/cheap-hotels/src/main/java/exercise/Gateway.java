@@ -86,9 +86,9 @@ public final class Gateway {
                             "service", service
                     ))
                     .filter(hotelInfo -> {
-                       Map<String, Object> hotel = (Map) hotelInfo.get("hotel");
-                       double price = (double) hotel.get("cost");
-                       return price >= min && price <= max;
+                        Map<String, Object> hotel = (Map) hotelInfo.get("hotel");
+                        double price = (double) hotel.get("cost");
+                        return price >= min && price <= max;
                     });
         }).toList();
     }
