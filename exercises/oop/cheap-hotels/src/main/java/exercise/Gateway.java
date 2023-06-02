@@ -94,7 +94,7 @@ public final class Gateway {
     }
 
     public List<Map<String, Object>> findAll2() {
-        return findAll(new HashMap<String, Integer>());
+        return findAll(new HashMap<>());
     }
 
     private static List<Map<String, Object>> getData(String fileName) {

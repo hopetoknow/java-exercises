@@ -24,7 +24,23 @@ public class App {
         return findTheCheapestService(new HashMap<>());
     }
 
+    public static Map<String, Object> findTheCheapestService2(Map<String, Integer> priceRangeFilters) {
+        Gateway gateway = new Gateway();
+
+        return gateway.findAll2(priceRangeFilters).stream().min(Comparator.comparing(hotelInfo -> {
+                    Map<String, Object> hotel = (Map) hotelInfo.get("hotel");
+                    return (double) hotel.get("cost");
+                }))
+                .orElse(null);
+    }
+
+    public static Map<String, Object> findTheCheapestService2() {
+        return findTheCheapestService2(new HashMap<>());
+
+    }
+
     private static void sort(List<Map<String, Object>> hotelInfos) {
-        hotelInfos.sort(Comparator.comparing(hotel -> (double) ((Map<String, Object>)hotel.get("hotel")).get("cost")));
+        hotelInfos.sort(Comparator.comparing(hotelInfo ->
+                (double) ((Map<String, Object>)hotelInfo.get("hotel")).get("cost")));
     }
 }
