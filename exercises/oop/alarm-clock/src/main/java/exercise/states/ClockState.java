@@ -4,7 +4,7 @@ import exercise.AlarmClock;
 
 public class ClockState implements State {
 
-    private AlarmClock alarmClock;
+    private final AlarmClock alarmClock;
 
     public ClockState(AlarmClock alarmClock) {
         this.alarmClock = alarmClock;
@@ -23,5 +23,29 @@ public class ClockState implements State {
     @Override
     public void longClickMode() {
         alarmClock.changeAlarmStatus();
+    }
+
+    @Override
+    public void clickH() {
+        alarmClock.addOneHour();
+    }
+
+    @Override
+    public void clickM() {
+        alarmClock.addOneMinute();
+    }
+
+    @Override
+    public void tick() {
+        alarmClock.addOneMinute();
+        int currentMinutes = alarmClock.getMinutes();
+
+        if (currentMinutes == 0) {
+            alarmClock.addOneHour();
+        }
+
+        if (alarmClock.isAlarmTime() && alarmClock.isAlarmOn()) {
+            alarmClock.setState(new BellState(alarmClock));
+        }
     }
 }

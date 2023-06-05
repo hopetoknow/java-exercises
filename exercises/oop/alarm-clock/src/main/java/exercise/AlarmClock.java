@@ -50,6 +50,42 @@ public class AlarmClock {
         return getState().getName();
     }
 
+    public boolean isAlarmTime() {
+        return hours == alarmHours && minutes == alarmMinutes;
+    }
+
+    public void addOneHour() {
+        hours += 1;
+
+        if (hours == 24) {
+            hours = 0;
+        }
+    }
+
+    public void addOneMinute() {
+        minutes += 1;
+
+        if (minutes == 60) {
+            minutes = 0;
+        }
+    }
+
+    public void addOneAlarmHour() {
+        alarmHours += 1;
+
+        if (alarmHours == 24) {
+            alarmHours = 0;
+        }
+    }
+
+    public void addOneAlarmMinute() {
+        alarmMinutes += 1;
+
+        if (alarmMinutes == 60) {
+            alarmMinutes = 0;
+        }
+    }
+
     public void changeAlarmStatus() {
         this.isAlarmOn = !isAlarmOn;
     }
@@ -66,7 +102,15 @@ public class AlarmClock {
         state.longClickMode();
     }
 
+    public void clickH() {
+        state.clickH();
+    }
+
+    public void clickM() {
+        state.clickM();
+    }
+
     public void tick() {
-        this.minutes++;
+        state.tick();
     }
 }

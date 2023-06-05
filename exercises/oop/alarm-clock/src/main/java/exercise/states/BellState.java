@@ -2,17 +2,17 @@ package exercise.states;
 
 import exercise.AlarmClock;
 
-public class AlarmState implements State {
+public class BellState implements State {
 
     private final AlarmClock alarmClock;
 
-    public AlarmState(AlarmClock alarmClock) {
+    public BellState(AlarmClock alarmClock) {
         this.alarmClock = alarmClock;
     }
 
     @Override
     public String getName() {
-        return "alarm";
+        return "bell";
     }
 
     @Override
@@ -22,30 +22,22 @@ public class AlarmState implements State {
 
     @Override
     public void longClickMode() {
-        alarmClock.changeAlarmStatus();
+        alarmClock.setState(new ClockState(alarmClock));
     }
 
     @Override
     public void clickH() {
-        alarmClock.addOneAlarmHour();
+
     }
 
     @Override
     public void clickM() {
-        alarmClock.addOneAlarmMinute();
+
     }
 
     @Override
     public void tick() {
         alarmClock.addOneMinute();
-        int currentMinutes = alarmClock.getMinutes();
-
-        if (currentMinutes == 0) {
-            alarmClock.addOneHour();
-        }
-
-        if (alarmClock.isAlarmTime() && alarmClock.isAlarmOn()) {
-            alarmClock.setState(new BellState(alarmClock));
-        }
+        alarmClock.setState(new ClockState(alarmClock));
     }
 }
