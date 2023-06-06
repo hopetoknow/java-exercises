@@ -2,7 +2,7 @@ package exercise.states;
 
 import exercise.AlarmClock;
 
-public class BellState implements State {
+public final class BellState implements State {
 
     private final AlarmClock alarmClock;
 

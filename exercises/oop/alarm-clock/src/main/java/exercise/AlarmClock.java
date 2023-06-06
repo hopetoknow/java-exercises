@@ -3,7 +3,7 @@ package exercise;
 import exercise.states.ClockState;
 import exercise.states.State;
 
-public class AlarmClock {
+public final class AlarmClock {
 
     private int hours;
     private int minutes;
